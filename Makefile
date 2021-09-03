@@ -95,5 +95,8 @@ release:
 	git push -v --tags
 	$(MAKE) ponymuck
 
+ZIP = $(TMP)/$(MODULE)_$(BRANCH)_$(NOW)_$(REL).src.zip
+
 zip:
+	git archive --format zip --output $(ZIP) HEAD
 # / merge
