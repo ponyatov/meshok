@@ -1,0 +1,13 @@
+*~
+*.swp
+*.log
+
+/docs/
+/meshok/
+
+/__pycache__/
+
+target/
+Cargo.lock
+
+!.gitignore
