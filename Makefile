@@ -75,3 +75,25 @@ Linux_install Linux_update:
 $(RUSTUP):
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # / install
+
+# \ merge
+MERGE  = Makefile README.md .gitignore apt.dev apt.txt $(S)
+
+ponymuck:
+	git push -v
+	git checkout $@
+	git pull -v
+
+dev:
+	git push -v
+	git checkout $@
+	git pull -v
+	git checkout ponymuck -- $(MERGE)
+
+release:
+	git tag $(NOW)-$(REL)
+	git push -v --tags
+	$(MAKE) ponymuck
+
+zip:
+# / merge
