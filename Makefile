@@ -56,6 +56,8 @@ rust:
 # / all
 
 # \ doc
+doxy:
+	doxygen doxy.gen 1>/dev/null
 doc:
 # / doc
 
