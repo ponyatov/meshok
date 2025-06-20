@@ -4,6 +4,8 @@
 
 use std::time::Instant;
 
+use crate::gps;
+
 /// data transfer medium
 #[derive(Debug)]
 pub enum Medium {
@@ -53,6 +55,8 @@ pub struct Node {
     pub id: NodeID,
     pub last_seen: Instant,
     pub neighbors: Vec<NodeID>,
+    pub lat: gps::Lat,
+    pub lon: gps::Lon,
 }
 
 #[derive(Debug)]
