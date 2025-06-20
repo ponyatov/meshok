@@ -53,15 +53,15 @@ pub struct Iface<'a> {
 #[derive(Debug)]
 pub struct Node<'a> {
     /// numerical id
-    pub id: NodeID,
+    id: NodeID,
     /// optional name
-    pub name: Option<&'a str>,
+    name: Option<&'a str>,
     /// time marker of last incode packet (check node alive)
-    pub last_seen: Instant,
+    last_seen: Instant,
     /// single hop routing
-    pub neighbor: Vec<NodeID>,
+    neighbor: Vec<NodeID>,
     /// location for mobile meshes & repeaters
-    pub loc: gps::Point,
+    loc: gps::Point,
 }
 
 #[derive(Debug)]
