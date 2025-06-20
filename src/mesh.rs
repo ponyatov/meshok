@@ -8,17 +8,17 @@ use std::time::Instant;
 #[derive(Debug)]
 pub enum Medium {
     /// local inter-process communication (debug on a single host)
-    Icp,
+    IPC,
     /// IoT backed nets
-    Mqtt,
+    MQTT,
     /// UDP packets over generic IP networks
-    Udp,
+    UDP,
     /// raw Ethernet packets
     Eth,
     /// raw WiFi packets
     WiFi,
     /// Bluetooth
-    Ble,
+    BLE,
     /// LoRaWAN modules
     LoRa,
     /// generic radio trasmitter (freq in Hz)
@@ -31,8 +31,8 @@ type IFaceID = u8;
 #[derive(Debug)]
 #[repr(u8)]
 pub enum NodeID {
-    Broadcast = 0xFF,
-    Localhost = 0x00,
+    BroadCast = 0xFF,
+    LocalHost = 0x00,
     Single(u8),
 }
 
@@ -55,8 +55,12 @@ pub struct Node {
     pub neighbors: Vec<NodeID>,
 }
 
+/// time to live (number of mid hops)
+type TTL = u8;
+
 #[derive(Debug)]
 pub struct Packet {
     src: NodeID,
     dst: NodeID,
+    ttl: TTL,
 }
