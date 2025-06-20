@@ -55,12 +55,28 @@ pub struct Node {
     pub neighbors: Vec<NodeID>,
 }
 
-/// time to live (number of mid hops)
-type TTL = u8;
+#[derive(Debug)]
+pub enum Protocol {
+    Routing,
+    Discovery,
+    Data,
+    Control,
+}
 
 #[derive(Debug)]
 pub struct Packet {
+    /// source node
     src: NodeID,
+    /// target node[s]
     dst: NodeID,
-    ttl: TTL,
+    /// time to live (drop obsolete data)
+    ttl: Instant,
+    /// number of mid hops (drop circular loops)
+    hops: u8,
+    /// T: tag/type
+    t: Protocol,
+    /// L: length
+    l: u16,
+    /// V: value/payload
+    v: Vec<u8>,
 }
