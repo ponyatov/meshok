@@ -14,16 +14,33 @@ type ACoord = i16;
 /// 0 decimal places: ~1m
 const AScale: ACoord = 1;
 
+/// velocity vector
+type VCoord = i8;
+const VScale: VCoord = 1;
+
 /// latitude
 pub type Lat = HCoord;
 /// longitude
 pub type Lon = HCoord;
 /// altitude
 pub type Alt = ACoord;
+/// velocity
+pub type Vel = VCoord;
+
+/// velocity vector
+pub struct Velocity {
+    /// latitudinal
+    pub east: Vel,
+    /// longitudinal
+    pub north: Vel,
+    /// altitudinal
+    pub up: Vel,
+}
 
 /// location point
 pub struct Point {
-    pub lat: Lat, // microdegrees
-    pub lon: Lon, // microdegrees
-    pub alt: Alt, // meters
+    pub lat: Lat,      // microdegrees
+    pub lon: Lon,      // microdegrees
+    pub alt: Alt,      // meters
+    pub vel: Velocity, // km/h
 }
