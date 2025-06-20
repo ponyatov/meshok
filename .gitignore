@@ -1,1 +1,6 @@
-/target
+*~
+*.swp
+*.log
+*.o
+target/
+!.gitignore

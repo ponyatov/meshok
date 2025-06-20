@@ -1,0 +1,4 @@
+## linux
+LINUX_VER  = 6.12
+UCLIBC_VER = 1.0.35
+GCC_VER    = 12
