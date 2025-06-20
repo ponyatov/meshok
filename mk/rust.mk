@@ -14,7 +14,6 @@ $(RUSTUP) $(CARGO):
 # rustup target add thumbv7m-none-eabi
 # rustup target add wasm32-unknown-unknown
 	rustup component add rust-analyzer rustfmt rust-src
-	cargo install cargo-watch
-# cargo install cargo-binutils
 # rustup component add llvm-tools
+	cargo install cargo-watch cargo-binutils
 # curl --proto '=https' --tlsv1.2 -LsSf https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools-installer.sh | sh
