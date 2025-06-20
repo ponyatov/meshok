@@ -1,0 +1,11 @@
+git make curl
+code meld doxygen clang-format
+g++ cmake gdb gdb-multiarch
+qemu-system-x86
+    g++-mingw-w64-i686
+qemu-system-arm
+    g++-aarch64-linux-gnu g++-arm-linux-gnueabihf
+    gcc-arm-none-eabi openocd newlib-source dfu-util stlink-tools
+qemu-system-misc
+    gcc-xtensa-lx106
+wireshark
