@@ -1,4 +1,5 @@
 /// @defgroup arch arch
+/// @ingroup cross
 
 /// @defgroup arm arm
 /// @ingroup arch
