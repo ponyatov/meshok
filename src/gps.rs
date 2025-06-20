@@ -28,6 +28,7 @@ pub type Alt = ACoord;
 pub type Vel = VCoord;
 
 /// velocity vector
+#[derive(Debug)]
 pub struct Velocity {
     /// latitudinal
     pub east: Vel,
@@ -38,6 +39,7 @@ pub struct Velocity {
 }
 
 /// location point
+#[derive(Debug)]
 pub struct Point {
     pub lat: Lat,      // microdegrees
     pub lon: Lon,      // microdegrees

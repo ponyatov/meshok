@@ -30,8 +30,8 @@ pub enum Medium {
 /// interface id (single byte for local/private nets)
 type IFaceID = u8;
 /// mesh node id (single byte for local/private nets)
-#[derive(Debug)]
 #[repr(u8)]
+#[derive(Debug)]
 pub enum NodeID {
     BroadCast = 0xFF,
     LocalHost = 0x00,
@@ -51,12 +51,17 @@ pub struct Iface<'a> {
 
 /// mesh node
 #[derive(Debug)]
-pub struct Node {
+pub struct Node<'a> {
+    /// numerical id
     pub id: NodeID,
+    /// optional name
+    pub name: Option<&'a str>,
+    /// time marker of last incode packet (check node alive)
     pub last_seen: Instant,
-    pub neighbors: Vec<NodeID>,
-    pub lat: gps::Lat,
-    pub lon: gps::Lon,
+    /// single hop routing
+    pub neighbor: Vec<NodeID>,
+    /// location for mobile meshes & repeaters
+    pub loc: gps::Point,
 }
 
 #[derive(Debug)]
