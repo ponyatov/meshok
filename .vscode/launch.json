@@ -1,0 +1,63 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "rust:linux",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--features=pc",
+                    "--target=x86_64-unknown-linux-gnu",
+                    "--bin=${workspaceFolderBasename}",
+                    "--package=${workspaceFolderBasename}"
+                ]
+            },
+            "args": ["1024", "768"],
+            "cwd": "${workspaceFolder}",
+            // "stopOnEntry": true,
+            "preLaunchTask": "cargo: build",
+            "preRunCommands": [
+                "process launch --stop-at-entry"
+            ]
+        },
+        {
+            "name"              : "pillf103",
+            "type"              : "cortex-debug",
+            "request"           : "launch",
+            "executable"        : "target/thumbv7m-none-eabi/debug/{{project-name}}",
+            "cwd"               : "${workspaceFolder}",
+            "servertype"        : "qemu",
+            "machine"           : "netduino2",
+            "cpu"               : "cortex-m3",
+            // "gdbTarget": ":12345",
+            "preLaunchTask"     : "cargo: pillf103",
+            "gdbPath"           : "gdb-multiarch",
+            // "runToEntryPoint"   : "DefaultPreInit",
+            "runToEntryPoint"   : "main",
+            // "preRestartCommands": [
+            //     "load",
+            //     // "break DefaultPreInit",
+            //     "break Reset",
+            //     "break ResetHandler",
+            //     "break DefaultHandler",
+            // ]
+        },
+        {
+            "name"         : "cmake:linux",
+            "type"         : "cppdbg",
+            "request"      : "launch",
+            "program"      : "${command:cmake.launchTargetPath}",
+            "preLaunchTask": "CMake: build",
+            "cwd"          : "${workspaceFolder}",
+            "MIMode": "gdb",
+            "setupCommands": [
+                {"text": "-enable-pretty-printing", "ignoreFailures": true}
+            ],
+            "args": ["${workspaceFolder}/lib/${workspaceFolderBasename}.ini"],
+            "externalConsole": false,
+            "stopAtEntry": true,
+        }
+    ]
+}
